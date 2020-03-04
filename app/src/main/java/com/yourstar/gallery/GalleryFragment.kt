@@ -29,7 +29,12 @@ class GalleryFragment : Fragment() {
         when (item.itemId) {
             R.id.swipeIndicator -> {
                 swipeLayoutGallery.isRefreshing = true
-                Handler().postDelayed(Runnable { galleryViewModel.fetchData() }, 1000)
+//                Handler().postDelayed(object : Runnable {
+//                    override fun run() {
+//                        galleryViewModel.fetchData()
+//                    }
+//                }, 1000)
+                Handler().postDelayed({ galleryViewModel.fetchData() }, 1000)
             }
         }
 

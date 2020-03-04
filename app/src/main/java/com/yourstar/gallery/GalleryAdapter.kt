@@ -2,14 +2,12 @@ package com.yourstar.gallery
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.os.Parcel
-import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -83,6 +81,4 @@ class GalleryAdapter : ListAdapter<PhotoItem, MyViewHolder>(DIFFCALLBACK) {
     }
 }
 
-class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-}
+class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
