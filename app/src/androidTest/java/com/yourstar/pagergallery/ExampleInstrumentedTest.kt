@@ -1,4 +1,4 @@
-package com.yourstar.gallery
+package com.yourstar.pagergallery
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

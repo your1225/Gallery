@@ -1,4 +1,4 @@
-package com.yourstar.gallery
+package com.yourstar.pagergallery
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -28,8 +28,12 @@ class GalleryAdapter : ListAdapter<PhotoItem, MyViewHolder>(DIFFCALLBACK) {
         )
         holder.itemView.setOnClickListener {
             Bundle().apply {
-                putParcelable("PHOTO", getItem(holder.adapterPosition))
-                holder.itemView.findNavController().navigate(R.id.action_galleryFragment_to_photoFragment, this)
+//                putParcelable("PHOTO", getItem(holder.adapterPosition))
+//                holder.itemView.findNavController().navigate(R.id.action_galleryFragment_to_photoFragment, this)
+
+                putParcelableArrayList("PHOTO_LIST", ArrayList(currentList))
+                putInt("PHOTO_POSITION", holder.adapterPosition)
+                holder.itemView.findNavController().navigate(R.id.action_galleryFragment_to_pagerPhotoFragment, this)
             }
         }
 
@@ -45,7 +49,7 @@ class GalleryAdapter : ListAdapter<PhotoItem, MyViewHolder>(DIFFCALLBACK) {
 
         Glide.with(holder.itemView)
             .load(getItem(position).previewUrl)
-            .placeholder(R.drawable.ic_photo_gray_24dp)
+            .placeholder(R.drawable.photo_placeholder)
             .listener(object : RequestListener<Drawable> {
                 override fun onLoadFailed(
                     e: GlideException?,

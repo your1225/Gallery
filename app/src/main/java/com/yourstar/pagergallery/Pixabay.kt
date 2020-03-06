@@ -1,4 +1,4 @@
-package com.yourstar.gallery
+package com.yourstar.pagergallery
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
