@@ -7,8 +7,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.android.volley.Request
 import com.android.volley.Response
+import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.google.gson.Gson
+import org.json.JSONArray
+import org.json.JSONObject
 
 class GalleryViewModel(application: Application) : AndroidViewModel(application) {
     private val _photoListLive = MutableLiveData<List<PhotoItem>>()
@@ -17,7 +20,7 @@ class GalleryViewModel(application: Application) : AndroidViewModel(application)
         get() = _photoListLive
 
     fun fetchData() {
-        val stringRequest = StringRequest(
+        val stringRequest = object :StringRequest(
             Request.Method.GET,
             getUrl(),
             Response.Listener {
@@ -26,7 +29,32 @@ class GalleryViewModel(application: Application) : AndroidViewModel(application)
             Response.ErrorListener {
                 Log.d("hello", it.toString())
             }
-        )
+        ){
+            override fun getParams(): MutableMap<String, String> {
+                return super.getParams()
+            }
+        }
+
+//        var payload:JSONObject = JSONObject()
+//        var vaArrar:JSONArray = JSONArray()
+//
+//        payload.put("ff", 1)
+//        payload.put("f2", "fff")
+//        payload.put("f3", true)
+//
+//
+//
+//        val jsonObjectRequest = JsonObjectRequest(
+//            Request.Method.POST,
+//            getUrl(),
+//            payload,
+//            Response.Listener<JSONObject> {
+//
+//            },
+//            Response.ErrorListener {
+//
+//            }
+//        )
 
         VolleySingleton.getInstance(getApplication()).requestQueue.add(stringRequest)
     }
