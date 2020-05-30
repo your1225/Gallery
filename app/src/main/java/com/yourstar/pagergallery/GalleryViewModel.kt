@@ -33,6 +33,14 @@ class GalleryViewModel(application: Application) : AndroidViewModel(application)
             override fun getParams(): MutableMap<String, String> {
                 return super.getParams()
             }
+
+            override fun getBody(): ByteArray {
+                return super.getBody()
+            }
+
+            override fun getBodyContentType(): String {
+                return super.getBodyContentType()
+            }
         }
 
 //        var payload:JSONObject = JSONObject()
